@@ -91,12 +91,11 @@ public class TourGuideService {
         return providers;
     }
 
-    public List<UserNearbyAttraction> getUserNearbyAttractions(String userName) {
+    public List<UserNearbyAttraction> getUserNearbyAttractions(User user) {
 
         List<UserNearbyAttraction> userNearbyAttractions = new ArrayList<>();
         List<Attraction>           attractions           = gpsUtil.getAttractions();
-        User                       user                  = getUser(userName);
-        VisitedLocation            visitedLocation       = getUserLocation(getUser(userName));
+        VisitedLocation            visitedLocation       = getUserLocation(user);
 
         for (Attraction attraction : attractions) {
             userNearbyAttractions.add(new UserNearbyAttraction(attraction.attractionName, attraction.latitude, attraction.longitude, visitedLocation.location.latitude, visitedLocation.location.longitude, rewardsService.getDistance(attraction, visitedLocation.location), rewardsService.getRewardPoints(attraction, user)));
