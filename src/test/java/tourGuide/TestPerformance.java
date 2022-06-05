@@ -62,7 +62,7 @@ public class TestPerformance {
 		stopWatch.start();
 
 		tourGuideService.trackUsersWithMultiThreading(allUsers);
-
+		String test = "test gitlab ci";
 		stopWatch.stop();
 		tourGuideService.tracker.stopTracking();
 
